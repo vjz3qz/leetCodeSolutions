@@ -1,0 +1,26 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Oct  3 18:07:17 2022
+
+@author: varunpasupuleti
+"""
+
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        d={} #create a dict
+        for i in range(len(nums)): #iterate through list with index i
+            if target-nums[i] in d and d.get(target-nums[i],0)!=i: #checks if target-current val is in the dictionary, and the indexes not the same
+                
+                return [d.get(target-nums[i],0),i] 
+            else:
+                d[nums[i]]=i #otherwise, the entry is added with the value as the key and the index as the val because it is the desired value
+        
+        #why does target-nums[i] in d work but d.get(target-nums[i]) does not work
+        #this didn't work: get(target-nums[i],0)!=0
+        #I thought this means not equal to 0 because 0 is the default val if not in dict
